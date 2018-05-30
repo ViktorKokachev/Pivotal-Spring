@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -24,5 +25,14 @@ public class MtBeanTest {
         MultipleTypesBean mtBean = (MultipleTypesBean) ctx.getBean("mtBean");
         assertNotNull(mtBean);
 
+        int beanCount1 = ctx.getBeanDefinitionNames().length;
+
+        ApplicationContext ctx2 = new ClassPathXmlApplicationContext(
+                "classpath:spring/others/*-config.xml"
+        );
+
+        int beanCount2 = ctx2.getBeanDefinitionNames().length;
+
+        assertEquals(beanCount1, beanCount2);
     }
 }
