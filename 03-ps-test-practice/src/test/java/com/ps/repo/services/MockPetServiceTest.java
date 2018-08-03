@@ -5,10 +5,14 @@ import com.ps.ents.Pet;
 import com.ps.ents.User;
 import com.ps.repos.PetRepo;
 import com.ps.services.impl.SimplePetService;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import javax.inject.Inject;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,10 +29,13 @@ public class MockPetServiceTest {
     public static final Long PET_ID = 1L;
     public static final User owner = buildUser("test@gmail.com", "a!2#tre", UserType.OWNER);
 
+    @InjectMocks
     SimplePetService simplePetService;
 
+    @Mock
     PetRepo petRepo;
 
+    @Before
     public void initMocks() {
         MockitoAnnotations.initMocks(this);
     }
