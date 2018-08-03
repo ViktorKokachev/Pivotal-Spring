@@ -1,5 +1,8 @@
 package com.ps.config;
 
+import com.ps.repo.stub.StubPetRepo;
+import com.ps.repos.PetRepo;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,4 +12,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = "com.ps.repo.stub")
 public class TestAppConfig {
+
+    @Bean
+    public PetRepo petRepo(){
+        return new StubPetRepo();
+    }
 }
